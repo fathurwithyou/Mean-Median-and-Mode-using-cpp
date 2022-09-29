@@ -8,18 +8,19 @@ typedef unsigned long long ull;
 using namespace std;
 
 void solve() {
-    int n;
-    cin >> n;
-    int cnt[n], data;
+    int n, max;
+    cin >> n >> max;
+    int cnt[max + 2], data;
     memset(cnt, 0, sizeof(cnt));
     for (int i = 0; i < n; i++) {
         cin >> data;
         cnt[data]++;
     }
-
+    int tmp = cnt[0];
     int mode = 0;
-    for (int i = 0; i < n; i++) {
-        if (cnt[i] > mode) {
+    for (int i = 1; i <= max; i++) {
+        if (cnt[i] >= tmp) {
+            tmp = cnt[i];
             mode = i;
         }
     }
