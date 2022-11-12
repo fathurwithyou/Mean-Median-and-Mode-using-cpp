@@ -8,24 +8,26 @@ typedef unsigned long long ull;
 using namespace std;
 
 void solve() {
-    int n, max;
+    int n, max, tmp = 0, now;
+    vector<int> mode;
     cin >> n >> max;
     int cnt[max + 2], data;
     memset(cnt, 0, sizeof(cnt));
     for (int i = 0; i < n; i++) {
         cin >> data;
         cnt[data]++;
-    }
-    int tmp = cnt[0];
-    int mode = 0;
-    for (int i = 1; i <= max; i++) {
-        if (cnt[i] >= tmp) {
-            tmp = cnt[i];
-            mode = i;
+        if (cnt[data] >= tmp) {
+            if (tmp == cnt[data] && now != data) {
+                mode.push_back(data);
+            } else {
+                mode.clear();
+                mode.push_back(data);
+            }
+            tmp = cnt[data];
+            now = data;
         }
     }
-
-    cout << mode;
+    for (int x : mode) cout << x << " ";
     return;
 }
 
