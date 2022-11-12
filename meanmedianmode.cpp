@@ -42,7 +42,7 @@ void solve() {
     if (n % 2)
         cout << arr[n / 2];
     else
-        cout << (arr[n / 2] + arr[n / 2 - 1]) / 2;
+        cout << (double)(arr[n / 2] + arr[n / 2 - 1]) / 2;
     cout << "\nMode: ";
     sort(mode.begin(), mode.end());
     for (int x : mode) cout << x << " ";
